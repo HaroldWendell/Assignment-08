@@ -80,7 +80,7 @@ def systhirdnumb(usernumbers, sysnum1, sysnum2):
 def Lottery(usernumbers, sysnumbers):
     userinput = sorted(usernumbers)
     sysgenerated = sorted(sysnumbers)
-    while userinput != sysgenerated:
+    while userinput != sysgenerated: # The three number picked by the user is incorrect, while if the three numbers that user picked matched the three random numbers it will now proceed to call the function prize.
         print('You loss. Better luck next time.')
         user_opt2 = input('Try again? [y/n]: ')
         if user_opt2 == 'y': # The user answer yes and he/she will try again.
