@@ -23,38 +23,36 @@ def startup():
 # 2. This function ask the user to input the first number.
 def userfirstnumb():
     usernum1 = int(input('First Number [0-9]: '))
-    if usernum1 < 0 or usernum1 > 9: # The user inputted a number that is less than 0 or greater than 9.
+    while usernum1 < 0 or usernum1 > 9: # The user inputted a number that is less than 0 or greater than 9.
         print('Only pick number from 0 to 9.')
         userfirstnumb()
-    else: # It will run the function usersecondnumb together with the value of the fist number because the user inputted a number within the range from 0 to 9.
-        usersecondnumb(usernum1)
+    # If the user inputted a number within the range from 0 to 9, it will run the function usersecondnumb together with the value of the fist number.
+    usersecondnumb(usernum1)
 
 # 3. This function ask the user to input the second number.
 def usersecondnumb(usernum1):
     usernum2 = int(input('Second Number [0-9]: '))
-    if usernum2 < 0 or usernum2 > 9: # Same comment like in the second step in the if statement.
+    while usernum2 < 0 or usernum2 > 9: # Same comment like in the second step in the if statement.
         print('Only pick number from 0 to 9.')
+        usersecondnumb(usernum1) 
+    if usernum2 == usernum1: # The user inputted a number within the range 0 to 9 but the user already picked that number. We cannot picked a number with the same value in a lottery game. 
+        print('You have already picked that number. Pick another number from 0 to 9.')
         usersecondnumb(usernum1)
-    else: 
-        if usernum2 == usernum1: # The user already picked that number. We cannot picked a number with the same value in a lottery game. 
-            print('You have already picked that number. Pick another number from 0 to 9.')
-            usersecondnumb(usernum1)
-        else: # Because the user entered a number between 0 and 9 and not the same value as the first number, the function userthirdnumb will be called along with the values of the first, second numbers.
-            userthirdnumb(usernum1, usernum2)
+    # The user entered a number between 0 and 9 and not the same value as the first number, the function userthirdnumb will be called along with the values of the first, second numbers.
+    userthirdnumb(usernum1, usernum2)
 
 # 4. This function ask the user to input the second number.
 def userthirdnumb(usernum1, usernum2):
     usernum3 = int(input('Third Number [0-9]: '))
-    if usernum3 < 0 or usernum3 > 9: # Same comment like in the second and third step in the first if statement.
+    while usernum3 < 0 or usernum3 > 9: # Same comment like in the second and third step in the first if statement.
         print('Only pick number from 0 to 9.')
         userthirdnumb(usernum1, usernum2)
-    else:
-        if usernum3 == usernum1 or usernum3 == usernum2: # Same comment like in the thirrd step in the second if statement.
-            print('You have already picked that number. Pick another number from 0 to 9.')
-            userthirdnumb(usernum1, usernum2)
-        else: # Because the user entered a number between 0 and 9 and not the same value as the first and second number, the function sysfirstnumb will be called along with the variable that stores the three numbers inputted by the user.
-            usernumbers = (usernum1, usernum2, usernum3)
-            sysfirstnumb(usernumbers)
+    if usernum3 == usernum1 or usernum3 == usernum2: # Same comment like in the thirrd step in the second if statement.
+        print('You have already picked that number. Pick another number from 0 to 9.')
+        userthirdnumb(usernum1, usernum2)
+    # Because the user entered a number between 0 and 9 and not the same value as the first and second number, the function sysfirstnumb will be called along with the variable that stores the three numbers inputted by the user.
+    usernumbers = (usernum1, usernum2, usernum3)
+    sysfirstnumb(usernumbers)
 
 # 5. This function generate the first random number and the function syssecondnumb will be called along the three numbers inputted by the user.
 def sysfirstnumb(usernumbers):
