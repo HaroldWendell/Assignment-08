@@ -26,7 +26,9 @@ def Lottery():
     usernum3 = int(input('Third Number[0-9]: '))
     usernumbers = (usernum1, usernum2, usernum3)
     sysnumbers = (sysnum1, sysnum2, sysnum3)
-    while usernumbers != sysnumbers:
+    userinput = sorted(usernumbers)
+    sysgenerated = sorted(sysnumbers)
+    while userinput != sysgenerated:
         print('You loss. Better luck next time.')
         user_opt2 = input('Try again? [y/n]: ')
         if user_opt2 == 'y':
